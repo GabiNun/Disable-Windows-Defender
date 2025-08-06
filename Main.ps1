@@ -1,4 +1,4 @@
-irm raw.githubusercontent.com/GabiNun/Windows-Defender-Remover/main/Defender.reg -OutFile $Env:Temp\Defender.reg
+irm raw.githubusercontent.com/GabiNun/Disable-Windows-Defender/main/Defender.reg -OutFile $Env:Temp\Defender.reg
 $regImportAction = New-ScheduledTaskAction -Execute 'reg.exe' -Argument "import `"$env:TEMP\Defender.reg`""
 Register-ScheduledTask -TaskName 'ImportDefenderReg' -Action $regImportAction | Out-Null
 $svc = New-Object -ComObject 'Schedule.Service'
