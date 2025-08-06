@@ -1,1 +1,1 @@
-irm github.com/mbcdev/RunAsTrustedInstaller/releases/download/release-0.1/RunAsTI.exe -OutFile $Env:Temp\RunAsTi.exe;& $Env:Temp\RunAsTi.exe "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -c "irm raw.githubusercontent.com/GabiNun/Windows-Defender-Remover/main/Defender.ps1 | iex"
+irm github.com/GabiNun/Windows-Defender-Remover/raw/main/PowerRun.exe -OutFile $Env:Temp\PowerRun.exe;& "$Env:Temp\PowerRun.exe" powershell.exe -Command "irm raw.githubusercontent.com/GabiNun/Windows-Defender-Remover/main/Defender.ps1 | iex"
