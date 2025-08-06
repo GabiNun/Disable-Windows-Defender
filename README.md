@@ -1,5 +1,5 @@
 ```powershell
-irm raw.githubusercontent.com/GabiNun/Disable-Defender-Remover/main/Main.ps1 | iex
+irm raw.githubusercontent.com/GabiNun/Disable-Windows-Defender/main/Main.ps1 | iex
 ```
 # Private Repository
 
