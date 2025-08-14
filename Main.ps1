@@ -3,6 +3,6 @@ Register-ScheduledTask -TaskName 'ImportDefenderReg' -Action (New-ScheduledTaskA
 ($s = New-Object -ComObject 'Schedule.Service').Connect(); $s.GetFolder('\').GetTask('ImportDefenderReg').RunEx($null, 0, 0, 'NT SERVICE\TrustedInstaller') | Out-Null
 
 $store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore';$appx = Get-AppxPackage Microsoft.SecHealthUI;$sids = @('S-1-5-18')
-$sids += Get-ChildItem $store -ea 0 | % PSChildName | ?{ $_ -like 'S-1-5-21*' }
+$sids += gci $store -ea 0 | % PSChildName | ?{ $_ -like 'S-1-5-21*' }
 $sids | % { New-Item "$store\EndOfLife\$_\$($appx.PackageFullName)" -Force | Out-Null }
 $appx | Remove-AppxPackage
