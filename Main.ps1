@@ -5,5 +5,5 @@ Register-ScheduledTask -TaskName 'ImportDefenderReg' -Action (New-ScheduledTaskA
 $store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore';$appx = Get-AppxPackage -AllUsers -Name "Microsoft.SecHealthUI";$sids = @('S-1-5-18')
 
 $sids += Get-ChildItem $store -ea 0 | %{ $_.PSChildName } | ?{ $_.StartsWith('S-1-5-21') }
-foreach ($sid in $sids) { New-Item "$store\EndOfLife\$sid\$($appx.PackageFullName)" -Force | Out-Null }
+$sids | % { New-Item "$store\EndOfLife\$_\$($appx.PackageFullName)" -Force | Out-Null }
 $appx | Remove-AppxPackage
